@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Isha Grow HR Consultancy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      --blue:#1A4F8A;
+      --blue-dark:#0D2137;
+      --green:#2E8B2E;
+      --green-light:#4CAF50;
+      --white:#FFFFFF;
+      --off-white:#F7FAF7;
+      --light-blue:#EAF1FB;
+      --light-green:#EAF5EA;
+      --text:#2C3E50;
+      --muted:#607080;
+      --border:#DDE8F0;
+    }
+    html{scroll-behavior:smooth;}
+    body{font-family:'Nunito',sans-serif;background:#fff;color:var(--text);overflow-x:hidden;}
+
+    /* NAV */
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      background:#fff;
+      border-bottom:2px solid var(--border);
+      padding:1rem 5%;
+      display:flex;justify-content:space-between;align-items:center;
+      box-shadow:0 2px 16px rgba(26,79,138,0.08);
+    }
+    .nav-brand{
+      display:flex;align-items:center;gap:0.7rem;
+    }
+    .nav-leaf{
+      width:38px;height:38px;
+      background:linear-gradient(135deg,var(--blue),var(--green-light));
+      border-radius:50% 50% 50% 10%;
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.1rem;
+    }
+    .nav-name{
+      font-family:'Playfair Display',serif;
+      font-size:1.25rem;font-weight:700;
+      background:linear-gradient(135deg,var(--blue),var(--green));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    }
+    .nav-name span{font-style:italic;}
+    .nav-tagline{font-size:0.65rem;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;line-height:1;}
+    .nav-links{display:flex;gap:2rem;list-style:none;}
+    .nav-links a{
+      color:var(--muted);text-decoration:none;font-size:0.85rem;
+      font-weight:600;letter-spacing:0.05em;text-transform:uppercase;
+      transition:color 0.3s;position:relative;padding-bottom:4px;
+    }
+    .nav-links a::after{
+      content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+      background:linear-gradient(90deg,var(--blue),var(--green));
+      transform:scaleX(0);transition:transform 0.3s;transform-origin:left;
+      border-radius:2px;
+    }
+    .nav-links a:hover{color:var(--blue);}
+    .nav-links a:hover::after{transform:scaleX(1);}
+
+    /* HERO */
+    .hero{
+      min-height:100vh;
+      background:linear-gradient(140deg,#0D2137 0%,#1A4F8A 55%,#1a6b3a 100%);
+      display:flex;align-items:center;
+      padding:7rem 5% 5rem;
+      position:relative;overflow:hidden;
+    }
+    .hero::before{
+      content:'';position:absolute;inset:0;
+      background:
+        radial-gradient(ellipse 50% 70% at 80% 50%,rgba(76,175,80,0.12) 0%,transparent 60%),
+        radial-gradient(ellipse 40% 40% at 20% 80%,rgba(26,79,138,0.3) 0%,transparent 60%);
+    }
+    .hero-grid-bg{
+      position:absolute;inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);
+      background-size:50px 50px;
+    }
+    .hero-wrap{
+      display:grid;grid-template-columns:1.1fr 0.9fr;gap:4rem;
+      align-items:center;max-width:1200px;margin:0 auto;width:100%;
+      position:relative;z-index:1;
+    }
+    .hero-badge{
+      display:inline-flex;align-items:center;gap:0.5rem;
+      background:rgba(76,175,80,0.15);
+      border:1px solid rgba(76,175,80,0.35);
+      color:#90ee90;
+      font-size:0.73rem;letter-spacing:0.18em;text-transform:uppercase;
+      padding:0.4rem 1.1rem;border-radius:100px;margin-bottom:1.5rem;
+      animation:fadeUp 0.7s ease both;
+    }
+    .hero-badge::before{content:'🌱';font-size:0.85rem;}
+    .hero-title{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(2.4rem,5vw,4rem);
+      font-weight:700;color:#fff;line-height:1.12;
+      margin-bottom:1.2rem;
+      animation:fadeUp 0.7s 0.1s ease both;
+    }
+    .hero-title .green{color:#7ee87e;}
+    .hero-title .italic{font-style:italic;}
+    .hero-sub{
+      color:rgba(255,255,255,0.72);font-size:1rem;line-height:1.85;
+      max-width:500px;margin-bottom:2rem;
+      animation:fadeUp 0.7s 0.2s ease both;
+    }
+    .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp 0.7s 0.3s ease both;}
+    .btn-primary{
+      padding:0.9rem 2.2rem;
+      background:linear-gradient(135deg,var(--green),var(--green-light));
+      color:#fff;font-weight:700;font-size:0.88rem;text-decoration:none;
+      border-radius:5px;transition:all 0.3s;letter-spacing:0.04em;
+      box-shadow:0 4px 16px rgba(46,139,46,0.3);
+    }
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(46,139,46,0.4);}
+    .btn-outline{
+      padding:0.9rem 2.2rem;background:transparent;color:#fff;
+      font-weight:600;font-size:0.88rem;text-decoration:none;
+      border:2px solid rgba(255,255,255,0.35);border-radius:5px;transition:all 0.3s;
+    }
+    .btn-outline:hover{border-color:rgba(255,255,255,0.7);background:rgba(255,255,255,0.07);}
+
+    /* Hero Card */
+    .hero-card{
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.13);
+      backdrop-filter:blur(14px);
+      border-radius:14px;padding:2rem;
+      animation:fadeUp 0.7s 0.4s ease both;
+    }
+    .hero-card-title{
+      font-family:'Playfair Display',serif;
+      color:#fff;font-size:1.1rem;font-weight:600;
+      margin-bottom:1.2rem;text-align:center;
+      border-bottom:1px solid rgba(255,255,255,0.1);
+      padding-bottom:1rem;
+    }
+    .stats-row{display:flex;gap:0.8rem;margin-bottom:1.2rem;}
+    .stat-box{
+      flex:1;background:rgba(255,255,255,0.07);
+      border-radius:8px;padding:0.9rem;text-align:center;
+      border:1px solid rgba(255,255,255,0.08);
+    }
+    .stat-val{
+      font-family:'Playfair Display',serif;
+      font-size:1.4rem;font-weight:700;
+      background:linear-gradient(135deg,#90caf9,#90ee90);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    }
+    .stat-lbl{font-size:0.68rem;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.07em;margin-top:0.2rem;}
+    .chip-wrap{display:flex;flex-wrap:wrap;gap:0.45rem;}
+    .chip{
+      padding:0.32rem 0.85rem;border-radius:100px;font-size:0.72rem;font-weight:600;
+      background:rgba(76,175,80,0.18);color:#a5f3a5;
+      border:1px solid rgba(76,175,80,0.28);
+    }
+
+    /* SECTION BASE */
+    section{padding:5.5rem 5%;}
+    .container{max-width:1100px;margin:0 auto;}
+    .sec-label{
+      font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;
+      color:var(--green);font-weight:700;margin-bottom:0.5rem;
+      display:flex;align-items:center;gap:0.5rem;
+    }
+    .sec-label::before{content:'';width:24px;height:2px;background:var(--green);border-radius:2px;}
+    .sec-title{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(1.9rem,3.5vw,2.7rem);
+      color:var(--blue-dark);line-height:1.18;margin-bottom:0.8rem;
+    }
+    .sec-title .accent{color:var(--green);}
+    .bar{width:48px;height:4px;border-radius:2px;
+      background:linear-gradient(90deg,var(--blue),var(--green));margin:1rem 0 1.8rem;}
+
+    /* ABOUT */
+    #about{background:var(--off-white);}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:start;}
+    .about-text p{color:var(--muted);line-height:1.9;font-size:0.95rem;margin-bottom:1rem;}
+    .about-text strong{color:var(--blue-dark);}
+    .quote-box{
+      background:linear-gradient(135deg,var(--light-blue),var(--light-green));
+      border-left:4px solid var(--green);border-radius:0 8px 8px 0;
+      padding:1.2rem 1.5rem;margin-top:1.5rem;
+      font-family:'Playfair Display',serif;font-style:italic;
+      font-size:1.05rem;color:var(--blue-dark);line-height:1.6;
+    }
+    .creds{display:flex;flex-direction:column;gap:1rem;}
+    .cred{
+      background:#fff;border:1px solid var(--border);border-radius:10px;
+      padding:1.3rem;display:flex;gap:1rem;align-items:flex-start;
+      transition:all 0.3s;border-left:3px solid transparent;
+    }
+    .cred:hover{transform:translateX(4px);border-left-color:var(--green);box-shadow:0 4px 18px rgba(26,79,138,0.09);}
+    .cred-icon{
+      width:42px;height:42px;border-radius:10px;flex-shrink:0;
+      display:flex;align-items:center;justify-content:center;font-size:1.2rem;
+    }
+    .ib{background:var(--light-blue);}
+    .ig{background:var(--light-green);}
+    .cred h4{font-weight:700;font-size:0.88rem;color:var(--blue-dark);margin-bottom:0.25rem;}
+    .cred p{font-size:0.8rem;color:var(--muted);line-height:1.6;}
+
+    /* SERVICES */
+    #services{background:#fff;}
+    .svc-header{text-align:center;max-width:600px;margin:0 auto 3rem;}
+    .svc-header .bar{margin:1rem auto 0;}
+    .svc-header p{color:var(--muted);font-size:0.95rem;line-height:1.75;margin-top:1rem;}
+    .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
+    .svc{
+      background:var(--off-white);border:1px solid var(--border);
+      border-radius:10px;padding:1.5rem;position:relative;overflow:hidden;
+      transition:all 0.3s;
+    }
+    .svc::after{
+      content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+      background:linear-gradient(90deg,var(--blue),var(--green));
+      transform:scaleX(0);transition:transform 0.3s;transform-origin:left;
+    }
+    .svc:hover{background:#fff;transform:translateY(-5px);box-shadow:0 12px 32px rgba(26,79,138,0.1);}
+    .svc:hover::after{transform:scaleX(1);}
+    .svc .ico{font-size:1.8rem;margin-bottom:0.8rem;}
+    .svc h4{font-weight:700;font-size:0.87rem;color:var(--blue-dark);margin-bottom:0.45rem;}
+    .svc p{font-size:0.78rem;color:var(--muted);line-height:1.65;}
+
+    /* WHY US */
+    #why{
+      background:linear-gradient(140deg,var(--blue-dark) 0%,#1A4F8A 60%,#1a6b3a 100%);
+    }
+    #why .sec-title{color:#fff;}
+    #why .sec-label{color:#90ee90;}
+    #why .sec-label::before{background:#90ee90;}
+    .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+    .why-items{display:flex;flex-direction:column;gap:1rem;margin-top:1.5rem;}
+    .why-item{
+      display:flex;gap:1rem;
+      background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);
+      border-radius:10px;padding:1.2rem;transition:background 0.3s;
+    }
+    .why-item:hover{background:rgba(255,255,255,0.09);}
+    .why-num{
+      width:34px;height:34px;border-radius:50%;flex-shrink:0;
+      background:linear-gradient(135deg,var(--blue),var(--green-light));
+      color:#fff;font-weight:700;font-size:0.8rem;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .why-item h4{font-weight:700;font-size:0.87rem;color:#fff;margin-bottom:0.25rem;}
+    .why-item p{font-size:0.78rem;color:rgba(255,255,255,0.55);line-height:1.65;}
+    .mv-box{
+      background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);
+      border-radius:12px;padding:2rem;
+    }
+    .mv-block{margin-bottom:1.8rem;}
+    .mv-block:last-child{margin-bottom:0;}
+    .mv-label{
+      font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;
+      color:#90ee90;font-weight:700;margin-bottom:0.5rem;
+      display:flex;align-items:center;gap:0.5rem;
+    }
+    .mv-label::before{content:'';width:18px;height:2px;background:#90ee90;border-radius:2px;}
+    .mv-block p{
+      font-family:'Playfair Display',serif;font-style:italic;
+      color:rgba(255,255,255,0.8);font-size:0.95rem;line-height:1.75;
+    }
+    .domains-wrap{
+      margin-top:1.8rem;padding-top:1.8rem;
+      border-top:1px solid rgba(255,255,255,0.1);
+    }
+    .domains-title{font-size:0.72rem;color:#90ee90;text-transform:uppercase;letter-spacing:0.12em;font-weight:700;margin-bottom:0.8rem;}
+    .d-pills{display:flex;flex-wrap:wrap;gap:0.5rem;}
+    .d-pill{
+      padding:0.32rem 0.85rem;border-radius:100px;font-size:0.72rem;font-weight:600;
+      background:rgba(76,175,80,0.15);color:#a5f3a5;
+      border:1px solid rgba(76,175,80,0.25);
+    }
+
+    /* FOUNDER */
+    #founder{background:var(--off-white);}
+    .founder-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:center;}
+    .founder-card{
+      background:#fff;border-radius:16px;border:1px solid var(--border);
+      padding:2.5rem;text-align:center;
+      box-shadow:0 8px 32px rgba(26,79,138,0.08);
+    }
+    .avatar{
+      width:90px;height:90px;border-radius:50%;margin:0 auto 1.2rem;
+      background:linear-gradient(135deg,var(--blue),var(--green-light));
+      display:flex;align-items:center;justify-content:center;
+      font-size:2.2rem;color:#fff;
+      box-shadow:0 6px 20px rgba(26,79,138,0.25);
+    }
+    .founder-card h3{
+      font-family:'Playfair Display',serif;
+      font-size:1.6rem;color:var(--blue-dark);margin-bottom:0.2rem;
+    }
+    .founder-role{
+      color:var(--green);font-weight:700;font-size:0.8rem;
+      letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.2rem;
+    }
+    .badges{display:flex;justify-content:center;gap:0.5rem;flex-wrap:wrap;margin-bottom:1.8rem;}
+    .badge{
+      padding:0.35rem 0.9rem;border-radius:100px;font-size:0.72rem;font-weight:700;
+      background:var(--light-blue);color:var(--blue);border:1px solid #c5daef;
+    }
+    .contact-list{display:flex;flex-direction:column;gap:0.7rem;}
+    .ci{
+      display:flex;align-items:center;gap:0.8rem;
+      background:var(--off-white);border-radius:8px;padding:0.75rem 1rem;
+      border:1px solid var(--border);
+    }
+    .ci .ic{font-size:1.1rem;}
+    .ci .lbl{font-size:0.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;line-height:1;}
+    .ci .val{font-weight:700;color:var(--blue-dark);font-size:0.88rem;margin-top:0.15rem;}
+    .founder-text p{color:var(--muted);line-height:1.9;font-size:0.95rem;margin-bottom:1rem;}
+    .founder-text strong{color:var(--blue-dark);}
+    .promise-box{
+      background:linear-gradient(135deg,var(--light-blue),var(--light-green));
+      border-radius:10px;padding:1.3rem 1.5rem;margin-top:1.5rem;
+      border:1px solid var(--border);
+    }
+    .promise-box p{
+      font-family:'Playfair Display',serif;font-style:italic;
+      color:var(--blue-dark);font-size:0.95rem;line-height:1.7;
+    }
+    .promise-box strong{color:var(--green);font-style:normal;}
+
+    /* CONTACT */
+    #contact{
+      background:linear-gradient(140deg,var(--blue-dark) 0%,#1A4F8A 60%,#1a6b3a 100%);
+    }
+    #contact .sec-title{color:#fff;}
+    #contact .sec-label{color:#90ee90;}
+    #contact .sec-label::before{background:#90ee90;}
+    .c-wrap{text-align:center;max-width:650px;margin:0 auto;}
+    .c-wrap .bar{margin:1rem auto 1.5rem;}
+    .c-wrap .sub{color:rgba(255,255,255,0.65);font-size:0.95rem;line-height:1.75;margin-bottom:2.5rem;}
+    .c-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-bottom:2rem;}
+    .c-card{
+      background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);
+      border-radius:10px;padding:1.8rem 1.2rem;text-align:center;transition:background 0.3s;
+    }
+    .c-card:hover{background:rgba(255,255,255,0.11);}
+    .c-card .ico{font-size:1.8rem;margin-bottom:0.6rem;}
+    .c-card h4{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:#90ee90;margin-bottom:0.4rem;font-weight:700;}
+    .c-card p{font-size:0.9rem;color:rgba(255,255,255,0.85);font-weight:600;}
+    .cta-final{
+      background:rgba(76,175,80,0.13);border:1px solid rgba(76,175,80,0.28);
+      border-radius:12px;padding:2.5rem;
+    }
+    .cta-final h3{
+      font-family:'Playfair Display',serif;font-size:1.8rem;color:#fff;margin-bottom:0.5rem;
+    }
+    .cta-final p{color:rgba(255,255,255,0.6);font-size:0.88rem;margin-bottom:1.5rem;}
+
+    /* FOOTER */
+    footer{
+      background:#080f1a;padding:2rem 5%;
+      display:flex;justify-content:space-between;align-items:center;
+      border-top:1px solid rgba(255,255,255,0.06);
+    }
+    .f-brand{display:flex;align-items:center;gap:0.7rem;}
+    .f-leaf{
+      width:32px;height:32px;
+      background:linear-gradient(135deg,var(--blue),var(--green-light));
+      border-radius:50% 50% 50% 10%;
+      display:flex;align-items:center;justify-content:center;font-size:0.9rem;
+    }
+    .f-name{
+      font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;
+      background:linear-gradient(135deg,#90caf9,#90ee90);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+    }
+    .f-right{text-align:right;}
+    .f-right p{font-size:0.76rem;color:rgba(255,255,255,0.3);line-height:1.7;}
+
+    /* ANIMATIONS */
+    @keyframes fadeUp{
+      from{opacity:0;transform:translateY(22px);}
+      to{opacity:1;transform:translateY(0);}
+    }
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
+    .revealed{opacity:1;transform:translateY(0);}
+
+    @media(max-width:960px){
+      .hero-wrap,.about-grid,.why-grid,.founder-grid{grid-template-columns:1fr;}
+      .svc-grid{grid-template-columns:1fr 1fr;}
+      nav .nav-links{display:none;}
+      .c-cards{grid-template-columns:1fr;}
+      footer{flex-direction:column;gap:1rem;text-align:center;}
+      .f-right{text-align:center;}
+      .f-brand{justify-content:center;}
+    }
+    @media(max-width:560px){
+      .svc-grid{grid-template-columns:1fr;}
+      .stats-row{flex-direction:column;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-leaf">🌱</div>
+    <div>
+      <div class="nav-name">Isha<span>Grow</span> HR</div>
+      <div class="nav-tagline">HR Consultancy</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#founder">Founder</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-wrap">
+    <div>
+      <div class="hero-badge">Talent Sourcing &amp; Placement</div>
+      <h1 class="hero-title">
+        Right People.<br>
+        <span class="green italic">Right Role.</span><br>
+        Right Time.
+      </h1>
+      <p class="hero-sub">
+        Connecting the right candidate to the right company — specializing in fresher sourcing, bulk hiring, and multi-domain talent placement across India.
+      </p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary">Explore Services</a>
+        <a href="#contact" class="btn-outline">Contact Us</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">IshaGrow HR Consultancy</div>
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-val">MBA</div>
+          <div class="stat-lbl">HR & Marketing</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val">Pan</div>
+          <div class="stat-lbl">India Network</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val">Bulk</div>
+          <div class="stat-lbl">Hiring Ready</div>
+        </div>
+      </div>
+      <div class="chip-wrap">
+        <span class="chip">Sales</span>
+        <span class="chip">Digital Marketing</span>
+        <span class="chip">Content Writing</span>
+        <span class="chip">HR</span>
+        <span class="chip">Operations</span>
+        <span class="chip">Finance</span>
+        <span class="chip">BPO</span>
+        <span class="chip">Bulk Hiring</span>
+        <span class="chip">Freshers</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="sec-label">Who We Are</div>
+        <h2 class="sec-title">Bridging Talent &amp;<br><span class="accent">Opportunity</span></h2>
+        <div class="bar"></div>
+        <p><strong>Isha Grow HR Consultancy</strong> is a professional talent sourcing and placement firm with one clear purpose — connecting the right candidate to the right company.</p>
+        <p>We are not just a recruitment agency. We are a strategic hiring partner. We go beyond matching resumes to job descriptions — we assess skills, personality, work culture, and career goals to ensure every placement is a long-term success.</p>
+        <p>We specialize in sourcing <strong>freshers and early-career professionals</strong> across all major non-IT domains, and we deliver both individual placements and large-scale <strong>bulk hiring solutions</strong> for businesses across India.</p>
+        <div class="quote-box">"Every company deserves a team that drives their vision forward. Every candidate deserves a role where they can grow."</div>
+      </div>
+      <div class="creds reveal">
+        <div class="cred">
+          <div class="cred-icon ib">🎓</div>
+          <div>
+            <h4>MBA — Human Resources</h4>
+            <p>Expert knowledge in talent management, organizational behavior, labor laws, and strategic workforce planning.</p>
+          </div>
+        </div>
+        <div class="cred">
+          <div class="cred-icon ig">📈</div>
+          <div>
+            <h4>MBA — Marketing</h4>
+            <p>Strong foundation in employer branding, consumer behavior, digital marketing, and market positioning strategy.</p>
+          </div>
+        </div>
+        <div class="cred">
+          <div class="cred-icon ib">🎯</div>
+          <div>
+            <h4>Fresher &amp; Bulk Hiring Experts</h4>
+            <p>Deep expertise in sourcing fresh graduates and managing high-volume drives across all non-IT functions.</p>
+          </div>
+        </div>
+        <div class="cred">
+          <div class="cred-icon ig">🤝</div>
+          <div>
+            <h4>Quality Over Quantity</h4>
+            <p>We screen every candidate for skills, communication, and role fitment — no random resume dumps, ever.</p>
+          </div>
+        </div>
+        <div class="cred">
+          <div class="cred-icon ib">🌍</div>
+          <div>
+            <h4>Pan-India Reach</h4>
+            <p>Strong candidate network and industry connections to serve companies and job seekers across India.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="svc-header reveal">
+      <div class="sec-label" style="justify-content:center;">What We Offer</div>
+      <h2 class="sec-title">Our <span class="accent">Core Services</span></h2>
+      <div class="bar"></div>
+      <p>End-to-end talent sourcing across all major non-IT domains — for freshers, experienced professionals, and large-scale bulk hiring requirements.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc reveal">
+        <div class="ico">📞</div>
+        <h4>Sales & Business Development</h4>
+        <p>Field sales, inside sales, telecallers, BDE — target-driven candidates ready to perform from day one.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico">📱</div>
+        <h4>Digital Marketing</h4>
+        <p>SEO executives, social media managers, PPC specialists, performance marketers, and digital marketing freshers.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico">✍️</div>
+        <h4>Content Writing</h4>
+        <p>Blog writers, copywriters, script writers, social media creators, and proofreaders with strong language skills.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico">👥</div>
+        <h4>HR & Recruitment</h4>
+        <p>HR executives, talent acquisition associates, payroll assistants, and HR generalists who understand people.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico">⚙️</div>
+        <h4>Operations & Back Office</h4>
+        <p>Operations executives, MIS professionals, data entry, and back-office coordinators across industries.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico">💰</div>
+        <h4>Finance & Accounts</h4>
+        <p>Accounts assistants, billing executives, junior accountants, and finance coordinators for your business.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico">🎧</div>
+        <h4>BPO & Customer Service</h4>
+        <p>Voice and non-voice process associates, customer support executives with strong communication skills.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ico">🚀</div>
+        <h4>Bulk Hiring Drives</h4>
+        <p>End-to-end bulk recruitment — 10 to 1000 positions, across any domain, within your timeline and budget.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="container">
+    <div class="why-grid">
+      <div>
+        <div class="sec-label reveal">Why Choose Us</div>
+        <h2 class="sec-title reveal">The IshaGrow<br>Advantage</h2>
+        <div class="why-items">
+          <div class="why-item reveal">
+            <div class="why-num">01</div>
+            <div>
+              <h4>All Domains, One Partner</h4>
+              <p>Sales, digital marketing, content, HR, finance, BPO — we source across all major non-IT functions so you need just one trusted agency.</p>
+            </div>
+          </div>
+          <div class="why-item reveal">
+            <div class="why-num">02</div>
+            <div>
+              <h4>Fresher Placement Specialists</h4>
+              <p>We understand the fresher talent market deeply — where to find quality candidates and how to match raw potential to the right roles.</p>
+            </div>
+          </div>
+          <div class="why-item reveal">
+            <div class="why-num">03</div>
+            <div>
+              <h4>Bulk Hiring at Any Scale</h4>
+              <p>Whether you need 10 or 500 candidates, our structured sourcing process delivers the numbers without compromising on quality.</p>
+            </div>
+          </div>
+          <div class="why-item reveal">
+            <div class="why-num">04</div>
+            <div>
+              <h4>Long-Term Success Focus</h4>
+              <p>We measure success not by how many we place, but by how well those placements work out — for both employer and candidate.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mv-box reveal">
+        <div class="mv-block">
+          <div class="mv-label">Our Mission</div>
+          <p>To bridge the gap between talented individuals and the organizations that need them — through careful assessment, honest guidance, and a deep commitment to finding not just a fit, but the <strong style="color:#90ee90;font-style:normal;">right fit.</strong></p>
+        </div>
+        <div class="mv-block">
+          <div class="mv-label">Our Vision</div>
+          <p>To be the most trusted HR consultancy in India — recognized for placing the <strong style="color:#90ee90;font-style:normal;">right people in the right roles,</strong> every single time.</p>
+        </div>
+        <div class="domains-wrap">
+          <div class="domains-title">Domains We Hire For</div>
+          <div class="d-pills">
+            <span class="d-pill">Sales & BD</span>
+            <span class="d-pill">Digital Marketing</span>
+            <span class="d-pill">Content Writing</span>
+            <span class="d-pill">Copywriting</span>
+            <span class="d-pill">HR & Recruitment</span>
+            <span class="d-pill">Marketing & Brand</span>
+            <span class="d-pill">Operations</span>
+            <span class="d-pill">Finance & Accounts</span>
+            <span class="d-pill">BPO & Support</span>
+            <span class="d-pill">Administration</span>
+            <span class="d-pill">Market Research</span>
+            <span class="d-pill">Social Media</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section id="founder">
+  <div class="container">
+    <div class="founder-grid">
+      <div class="founder-card reveal">
+        <div class="avatar">👩‍💼</div>
+        <h3>Christilla</h3>
+        <div class="founder-role">Founder &amp; HR Consultant</div>
+        <div class="badges">
+          <span class="badge">MBA — HR</span>
+          <span class="badge">MBA — Marketing</span>
+        </div>
+        <div class="contact-list">
+          <div class="ci">
+            <span class="ic">📞</span>
+            <div>
+              <div class="lbl">Phone / WhatsApp</div>
+              <div class="val">+91 87609 88891</div>
+            </div>
+          </div>
+          <div class="ci">
+            <span class="ic">📍</span>
+            <div>
+              <div class="lbl">Location</div>
+              <div class="val">Chennai, Tamil Nadu</div>
+            </div>
+          </div>
+          <div class="ci">
+            <span class="ic">🏢</span>
+            <div>
+              <div class="lbl">Consultancy</div>
+              <div class="val">Isha Grow HR Consultancy</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="founder-text reveal">
+        <div class="sec-label">Meet the Founder</div>
+        <h2 class="sec-title">A Passion for<br><span class="accent">Connecting People</span></h2>
+        <div class="bar"></div>
+        <p><strong>Isha Grow HR Consultancy</strong> was founded by <strong>Christilla</strong>, an MBA graduate with dual specialization in Human Resources and Marketing, driven by a deep belief that the right people in the right roles can transform any organization.</p>
+        <p>With expertise spanning talent management, organizational behavior, labor laws, workforce planning, and employer branding, Christilla brings a unique blend of people expertise and business strategy to every hiring engagement.</p>
+        <p>Based in <strong>Chennai, Tamil Nadu</strong>, the consultancy serves clients across industries — helping companies find the teams they need to grow, and helping candidates find careers where they can truly thrive.</p>
+        <div class="promise-box">
+          <p><strong>Our Promise —</strong> Every company deserves a team that drives their vision forward. Every candidate deserves a role where they can learn, grow, and build a meaningful career. <strong>At Isha Grow HR Consultancy, we make that connection happen.</strong></p>
+        </div>
+        <a href="tel:+918760988891" class="btn-primary" style="display:inline-block;margin-top:1.5rem;">📞 Call Us Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="c-wrap reveal">
+      <div class="sec-label" style="justify-content:center;">Get In Touch</div>
+      <h2 class="sec-title">Let's Build Your<br>Dream Team</h2>
+      <div class="bar"></div>
+      <p class="sub">Whether you need freshers, a bulk hiring drive, or a specialist — we are ready to help you find the right talent, fast.</p>
+      <div class="c-cards">
+        <div class="c-card">
+          <div class="ico">📞</div>
+          <h4>Phone & WhatsApp</h4>
+          <p>+91 87609 88891</p>
+        </div>
+        <div class="c-card">
+          <div class="ico">📍</div>
+          <h4>Location</h4>
+          <p>Chennai, Tamil Nadu</p>
+        </div>
+        <div class="c-card">
+          <div class="ico">🕐</div>
+          <h4>Availability</h4>
+          <p>Mon – Sat, 9AM – 7PM</p>
+        </div>
+      </div>
+      <div class="cta-final">
+        <h3>Ready to Find the Right Talent?</h3>
+        <p>Call or WhatsApp us today. Let's discuss your hiring requirements.</p>
+        <a href="tel:+918760988891" class="btn-primary">📞 Call +91 87609 88891</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-brand">
+    <div class="f-leaf">🌱</div>
+    <div class="f-name">IshaGrow HR Consultancy</div>
+  </div>
+  <div class="f-right">
+    <p>© 2025 Isha Grow HR Consultancy. All rights reserved.</p>
+    <p>Chennai, Tamil Nadu &nbsp;|&nbsp; +91 87609 88891</p>
+    <p>Right People. Right Role. Right Time.</p>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('revealed'); });
+  }, {threshold: 0.1});
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
